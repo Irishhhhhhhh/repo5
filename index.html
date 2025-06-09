@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Кав’ярня "Sparkle"</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(135deg, #fffaf4, #fbe5d3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .container {
+      background-color: #ffffffec;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(140, 98, 57, 0.3);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #8c6239;
+      text-shadow: 0 1px 2px #dcc2a2;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 12px 0;
+      font-size: 18px;
+    }
+
+    input[type="number"] {
+      width: 60px;
+      font-size: 16px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px;
+      width: 48%;
+      background-color: #a47148;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #8c6239;
+      transform: scale(1.03);
+    }
+
+    #total-display {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #5a3926;
+    }
+
+    .gallery {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .gallery h2 {
+      color: #8c6239;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .gallery-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .gallery-row img {
+      width: 220px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+    }
+
+    .gallery-row img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+    }
+
+    footer a {
+      color: #a47148;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Кав’ярня "Sparkle" ☕</h1>
+    <h2>Меню</h2>
+
+    <div class="menu-item">
+      <label for="coffee">Кава (50 грн):</label>
+      <input type="number" id="coffee" min="0" value="0">
+    </div>
+
+    <div class="menu-item">
+      <label for="tea">Чай (40 грн):</label>
+      <input type="number" id="tea" min="0" value="0">
+    </div>
+
+    <div class="menu-item">
+      <label for="croissant">Круасан (60 грн):</label>
+      <input type="number" id="croissant" min="0" value="0">
+    </div>
+
+    <div class="menu-item">
+      <label for="sandwich">Сендвіч (70 грн):</label>
+      <input type="number" id="sandwich" min="0" value="0">
+    </div>
+
+    <div class="buttons">
+      <button id="calculate-btn">Порахувати</button>
+      <button id="clear-btn">Очистити</button>
+    </div>
+
+    <p id="total-display">Загальна сума: 0 грн</p>
+  </div>
+
+  <div class="gallery">
+    <h2>Наша атмосфера</h2>
+    <div class="gallery-row">
+      <img src="photo2.jpg" alt="Затишна зала кав’ярні">
+      <img src="photo4.jpg" alt="Ароматна кава на столі">
+      <img src="photo5.jpg" alt="Інтер'єр">
+  </div>
+
+  <footer>
+    <p>📍 Київ, вул. Кавова, 12</p>
+    <p>📞 Телефон: <a href="tel:+380991112233">+38 (099) 111-22-33</a></p>
+    <p>sparkle.info@gmail.com</p>
+    <p>⏰ Працюємо: Пн–Нд з 08:00 до 20:00</p><p style="margin-top: 10px;">&copy; 2025 Кав’ярня "Sparkle" ☕ — Усі права захищено</p>
+    <p>Розробник: Березюк Ірина ФІТ 2-11</p>
+</footer>
+
+  <script>
+    // Коли натискають "Порахувати"
+    document.getElementById('calculate-btn').addEventListener('click', function () {
+      const coffee = parseInt(document.getElementById('coffee').value) || 0;
+      const tea = parseInt(document.getElementById('tea').value) || 0;
+      const croissant = parseInt(document.getElementById('croissant').value) || 0;
+      const sandwich = parseInt(document.getElementById('sandwich').value) || 0;
+
+      const total = coffee * 50 + tea * 40 + croissant * 60 + sandwich * 70;
+
+      document.getElementById('total-display').textContent = 'Загальна сума: ' + total + ' грн';
+    });
+
+    // Коли натискають "Очистити"
+    document.getElementById('clear-btn').addEventListener('click', function () {
+      document.getElementById('coffee').value = 0;
+      document.getElementById('tea').value = 0;
+      document.getElementById('croissant').value = 0;
+      document.getElementById('sandwich').value = 0;
+      document.getElementById('total-display').textContent = 'Загальна сума: 0 грн';
+    });
+  </script>
+
+</body>
+</html>
